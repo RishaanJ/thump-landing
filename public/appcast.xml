@@ -1,16 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  Thump update feed (Sparkle appcast).
-
-  Served at https://thump.rishaan.cc/appcast.xml — the SUFeedURL baked into the
-  app. This starter feed has no <item> entries, which Sparkle reads as
-  "you're up to date," so "Check for Updates…" works gracefully before the
-  first release.
-
-  To publish a release, DO NOT hand-edit this: run generate_appcast (see
-  RELEASING.md in the Thump app repo), which regenerates this whole file with
-  signed <item> entries, then copy the result here and re-deploy.
--->
 <rss version="2.0"
      xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
@@ -19,5 +7,24 @@
     <link>https://thump.rishaan.cc/appcast.xml</link>
     <description>Most recent updates to Thump.</description>
     <language>en</language>
+
+    <item>
+      <title>Thump 1.1</title>
+      <description>
+        What's new in Thump 1.1
+      </description>
+
+      <pubDate>Fri, 10 Jul 2026 00:00:00 +0000</pubDate>
+
+      <sparkle:version>2</sparkle:version>
+      <sparkle:shortVersionString>1.1</sparkle:shortVersionString>
+
+      <enclosure
+        url="https://github.com/RishaanJ/thump/releases/download/v1.1/Thump-1.1.dmg"
+        sparkle:edSignature="3l5jPTBWoy78TJM4jKQXU7kaqPkcpn0dpMEMKn3J2ZPnSu3tioyqZmxnbd630uA+mq9A6i5LOsYc3V/szmU9Bw=="
+        length="1822597"
+        type="application/octet-stream" />
+    </item>
+
   </channel>
 </rss>
