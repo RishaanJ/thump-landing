@@ -1,26 +1,164 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+  Thump landing — design system.
+  Monochrome, near-black + white glow, matching the app. No color accents
+  (color is reserved for meaning), no gradient text. Depth comes from glow,
+  hairlines, and motion.
+*/
+
+@theme {
+  --color-bg: #060608;
+  --color-bg-raised: #0d0d11;
+  --color-ink: #f6f6f8;
+  --color-ink-muted: #a3a3ad;
+  --color-hairline: rgba(255, 255, 255, 0.1);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  background: #060608;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #060608;
+  color: #f6f6f8;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* ---- Reusable brand utilities ---- */
+
+/* Soft white glow on any element (use sparingly on hero / focal points). */
+.glow {
+  box-shadow:
+    0 0 40px rgba(255, 255, 255, 0.08),
+    0 0 120px rgba(255, 255, 255, 0.04);
+}
+
+/* Text that reads as luminous white without gradient-clipping. */
+.glow-text {
+  color: #ffffff;
+  text-shadow: 0 0 28px rgba(255, 255, 255, 0.28);
+}
+
+.hairline {
+  border: 1px solid var(--color-hairline);
+}
+
+/* Frosted panel used for cards / surfaces. Radius kept ≤ 16px. */
+.surface {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+}
+
+/* Faint dotted grid for section backdrops. */
+.dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ---- Keyframes ---- */
+
+@keyframes ripple {
+  from { transform: scale(0.6); opacity: 0.7; }
+  to { transform: scale(2.6); opacity: 0; }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(30px, -20px); }
+}
+
+@keyframes rise-fade {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Shooting star: streaks diagonally down-left and fades. */
+@keyframes meteor {
+  0% { transform: rotate(215deg) translateX(0); opacity: 1; }
+  70% { opacity: 1; }
+  100% { transform: rotate(215deg) translateX(-600px); opacity: 0; }
+}
+
+/* Infinite horizontal marquee; track is duplicated once, so -50% loops. */
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Border beam angle sweep. */
+@property --beam-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes beam-spin {
+  to { --beam-angle: 360deg; }
+}
+
+.border-beam {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--beam-angle),
+    transparent 0deg,
+    transparent 300deg,
+    rgba(255, 255, 255, 0.9) 330deg,
+    transparent 360deg
+  );
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  animation: beam-spin 6s linear infinite;
+  pointer-events: none;
+}
+
+/* Slow orbital rotation for the footer satellite. */
+@keyframes orbit-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Mac key press */
+@keyframes key-press {
+  0% { transform: translateY(0); }
+  40% { transform: translateY(1.5px); filter: brightness(1.6); }
+  100% { transform: translateY(0); }
+}
+
+.animate-float-y { animation: float-y 6s var(--ease-out-expo) infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
