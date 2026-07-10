@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "Thump — Control your Mac with taps",
   description:
     "Tap the side of your MacBook to play music, launch apps, run shortcuts, and more. Thump reads the hidden accelerometer in Apple Silicon MacBooks — no extra hardware.",
-  metadataBase: new URL("https://trythump.app"),
+  metadataBase: new URL("https://thump.rishaan.cc"),
   openGraph: {
     title: "Thump — Control your Mac with taps",
     description:
