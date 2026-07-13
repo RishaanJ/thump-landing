@@ -9,20 +9,20 @@
     <language>en</language>
 
     <item>
-      <title>Thump 1.1</title>
+      <title>Thump 1.3</title>
       <description>
-        What's new in Thump 1.1
+        What's new in Thump 1.3
       </description>
 
-      <pubDate>Fri, 10 Jul 2026 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 13 Jul 2026 00:00:00 +0000</pubDate>
 
-      <sparkle:version>2</sparkle:version>
-      <sparkle:shortVersionString>1.1</sparkle:shortVersionString>
+      <sparkle:version>3</sparkle:version>
+      <sparkle:shortVersionString>1.3</sparkle:shortVersionString>
 
       <enclosure
-        url="https://github.com/RishaanJ/thump/releases/download/v1.1/Thump-1.1.dmg"
-        sparkle:edSignature="3l5jPTBWoy78TJM4jKQXU7kaqPkcpn0dpMEMKn3J2ZPnSu3tioyqZmxnbd630uA+mq9A6i5LOsYc3V/szmU9Bw=="
-        length="1822597"
+        url="https://github.com/RishaanJ/thump/releases/download/v1.3/Thump-1.3.dmg"
+        sparkle:edSignature="Ve2qitzoylr/kbLcMt60nNczOa1QhJ9hApABUsDnMjNvPnwHyQ6pF5u0OUiJWchUd1RZsFLcmC4SznTX5MJ0CA=="
+        length="1890250"
         type="application/octet-stream" />
     </item>
 

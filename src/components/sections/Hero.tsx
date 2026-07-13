@@ -49,7 +49,7 @@ export function Hero() {
       </p>
 
       <div className="relative z-10 mt-10 flex flex-col items-center gap-3 sm:flex-row">
-        <Button href="https://github.com/RishaanJ/thump/releases/download/v1.1/Thump-1.1.dmg" size="lg">
+        <Button href="https://github.com/RishaanJ/thump/releases/download/v1.3/Thump-1.3.dmg" size="lg">
           Download for Mac
         </Button>
         <Button href="#demo" size="lg" variant="ghost">
